@@ -204,9 +204,9 @@ let cameraLoading = false;
 let cameraFailed = false;
 
 function updateComparison() {
-  comparisonRange.setAttribute('aria-label', isKorean() ? '보정 전후 LiDAR 투영 결과 비교' : 'Compare LiDAR projection before and after calibration');
+  comparisonRange.setAttribute('aria-label', isKorean() ? '기존 보정값과 주행 기반 재보정 결과 비교' : 'Compare prior calibration with driving-log recalibration');
   comparison.style.setProperty('--split', `${comparisonRange.value}%`);
-  comparisonRange.setAttribute('aria-valuetext', isKorean() ? `보정 전 ${comparisonRange.value}% 표시` : `${comparisonRange.value}% previous calibration visible`);
+  comparisonRange.setAttribute('aria-valuetext', isKorean() ? `기존 보정값 ${comparisonRange.value}% 표시` : `${comparisonRange.value}% prior calibration visible`);
 }
 function renderCameraCopy() {
   const name = activeCamera[isKorean() ? 'ko' : 'en'];
@@ -219,14 +219,14 @@ function renderCameraCopy() {
     button.setAttribute('aria-pressed', String(view === activeCamera));
   });
   document.querySelectorAll('[data-camera-beam]').forEach(beam => beam.classList.toggle('active', beam.dataset.cameraBeam === activeCamera.key));
-  comparison.querySelector('.compare-base').alt = isKorean() ? `${name} 카메라의 보정 후 LiDAR 투영` : `${name} camera: calibrated LiDAR projection`;
-  comparison.querySelector('.compare-before img').alt = isKorean() ? `${name} 카메라의 기존 보정 LiDAR 투영` : `${name} camera: previous LiDAR projection`;
+  comparison.querySelector('.compare-base').alt = isKorean() ? (activeCamera.before ? `${name} 카메라의 주행 기반 재보정 결과` : `${name} 카메라의 주행 기반 보정 결과`) : `${name} camera: driving-log calibration result`;
+  comparison.querySelector('.compare-before img').alt = isKorean() ? `${name} 카메라의 센서팩 수리 후 기존 체커보드 보정값 적용 결과` : `${name} camera: prior checkerboard calibration after sensor-pack repairs`;
   const state = document.querySelector('.camera-state');
   if (cameraLoading) state.textContent = isKorean() ? '카메라 화면을 불러오는 중…' : 'Loading camera view…';
   else if (cameraFailed) state.textContent = isKorean() ? '화면을 불러오지 못했습니다. 카메라를 다시 선택해 주세요.' : 'View unavailable. Select a camera to retry.';
-  else if (!activeCamera.before) state.textContent = isKorean() ? '기존 보정값이 없어 보정 후 결과만 표시합니다.' : 'Calibrated result only. No previous calibration is available for this camera.';
-  else state.textContent = isKorean() ? '차량 위 카메라를 고른 뒤, 슬라이더로 전후를 비교하세요.' : 'Select a camera on the car, then drag to compare.';
-  comparison.querySelector('.compare-tag.after').textContent = activeCamera.before ? (isKorean() ? '보정 후' : 'AFTER') : (isKorean() ? '보정 결과' : 'CALIBRATED');
+  else if (!activeCamera.before) state.textContent = isKorean() ? '기존 보정값이 없어 주행 기반 보정 결과만 표시합니다.' : 'Calibrated result only. No previous calibration is available for this camera.';
+  else state.textContent = isKorean() ? '카메라를 고른 뒤, 기존 보정값과 재보정 결과를 비교하세요.' : 'Select a camera on the car, then drag to compare.';
+  comparison.querySelector('.compare-tag.after').textContent = activeCamera.before ? (isKorean() ? '주행 기반 재보정' : 'RECALIBRATED') : (isKorean() ? '보정 결과' : 'CALIBRATED');
 }
 async function selectCamera(key) {
   const view = cameraViews.find(item => item.key === key);

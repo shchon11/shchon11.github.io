@@ -150,3 +150,8 @@ The vehicle schematic selects seven calibrated views from one synchronized A-8 c
 Six cameras have genuine previous/new overlays of the same camera image. The traffic-signal camera has no historical calibration and therefore shows only its calibrated result, with the comparison slider disabled and an explicit note. No intermediate optimization result is substituted for a missing baseline. The original rendering remains unchanged apart from JPEG encoding/metadata removal. Each camera loads only when selected; pending selection races preserve the latest requested view.
 
 The ICCAS gallery photograph was corrected at the owner’s request on September 24: the earlier small-group image did not include them. Its replacement is the owner-confirmed larger participant-group image, retrieved at full resolution from iCloud. It is captioned as a participant group, not as one team alone.
+
+
+## Baseline context: recalibration after repair
+
+The owner clarified that the previous-calibration views use a checkerboard calibration performed approximately one month before the comparison. The sensor pack was subsequently repaired and its alignment shifted. These are therefore **prior calibration applied to a changed rig**, not an uncalibrated starting point or evidence that a freshly performed checkerboard calibration is intrinsically inaccurate. The concise public framing is the need to restore calibration after maintenance without repeating dedicated target captures. Comparison labels distinguish prior calibration from driving-log recalibration. The traffic camera still has no prior calibration and remains result-only.

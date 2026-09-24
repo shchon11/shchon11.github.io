@@ -98,8 +98,8 @@ Object.assign(korean, {
 Object.assign(korean, { navField: '현장 기록', fieldTitle: '실제로 만들어가는 현장.', fieldNote: '제작 / 테스트 / 대회', fieldAll: '전체', fieldCompetition: '대회', fieldSensors: '센서·현장 작업', fieldBuilds: '제작과 통합', dmImage: '장착 중인 실제 센서 리그' });
 
 Object.assign(korean, {
-  heroCalibLabel: '타깃 없는 캘리브레이션', heroCalibCaption: '체커보드 없이.<br>주행 데이터만으로.', heroCalibScope: '별도 보정판 촬영 없이, 평소 주행 로그로 7대 카메라와 LiDAR를 정렬합니다.', heroCalibLink: '직접 비교하고, 방법 살펴보기',
-  compareBefore: '보정 전', compareAfter: '보정 후',
+  heroCalibLabel: '타깃 없는 캘리브레이션', heroCalibCaption: '체커보드 없이.<br>주행 데이터만으로.', heroCalibScope: '수리로 틀어진 센서 정렬, 체커보드 재촬영 없이 주행 로그로 복원합니다.', heroCalibLink: '직접 비교하고, 방법 살펴보기',
+  compareBefore: '기존 보정값', compareAfter: '주행 기반 재보정',
   dmTitle: '카메라 드라이버부터<br>현장의 화면까지.',
   dmBody: '저수준 카메라 드라이버부터 장치 설정, GPU 영상 처리, 시간 동기화, 안정적인 취득과 보정, 사용자 인터페이스까지 실차 센서 스택 전체를 개발합니다. UI는 이 엔지니어링을 하나의 현장 운영 흐름으로 연결합니다.', dmCode: '센서 취득 스택 살펴보기',
   stackHeading: '장치에서 데이터셋까지', stackHint: '각 단계를 펼쳐보세요',
@@ -111,7 +111,7 @@ Object.assign(korean, {
   stackOperation: '현장 운영 UI', stackOperationBody: '장치 기동, 토픽 선택, 스트림 확인, 이벤트 기록과 누락·영상 멈춤·시간축 오류 진단을 하나의 워크플로로 통합.',
   onlineStatus: '실제 주행 로그', onlineTitle: '모든 센서의<br>좌표를 맞추다.', onlineSubtitle: '타깃 없는 온라인 캘리브레이션 · ROSbag → nuScenes',
   onlineBody: '일반 주행 로그로 렌즈 왜곡, 윈드쉴드 굴절, 센서 자세와 시간을 함께 추정하는 카메라–LiDAR 캘리브레이션 파이프라인을 개발했습니다. 보정된 센서 모델은 데이터셋 변환기로 바로 연결됩니다.',
-  onlineVisual: '동일한 실제 도로 프레임의 보정 전후입니다. 자홍색은 반사도가 높은 LiDAR 점으로, 영상 속 노면 표시와 일치해야 합니다.',
+  onlineVisual: '센서팩 수리 후, 한 달 전 체커보드 보정값(왼쪽)과 주행 기반 재보정값(오른쪽)을 비교합니다. 자홍색 LiDAR 점이 노면 표시와 맞아야 합니다.',
   calibTrackTitle: '움직이는 카메라를 모델링.', calibTrackBody: 'INS 자세, 롤링 셔터 시각, 어안 렌즈 모델과 B-spline 윈드쉴드 필드를 결합한 특징점 트랙 번들 조정.',
   calibMatchTitle: '다른 센서 사이의 대응점.', calibMatchBody: 'LiDAR 반사도 렌더링, LoFTR 대응점과 강건한 PnP로 카메라–LiDAR 기하 제약을 구성합니다.',
   calibRefineTitle: '하나의 시스템으로 추정.', calibRefineBody: '트랙과 LiDAR 매칭을 공동 최적화하고 LiDAR–차체 정합까지 추정한 뒤, 변환기에 사용할 보정값을 내보냅니다.',
