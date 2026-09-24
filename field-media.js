@@ -19,14 +19,14 @@ const fieldMedia = [
     "kind": "image",
     "category": "competition",
     "date": "2025.11",
-    "file": "iccas-team.jpg",
+    "file": "iccas-participants.jpg",
     "title": {
-      "en": "ICCAS F1TENTH Korea",
-      "ko": "ICCAS F1TENTH Korea 현장"
+      "en": "ICCAS F1TENTH · group photo",
+      "ko": "ICCAS F1TENTH 단체 사진"
     },
     "caption": {
-      "en": "At the 2025 championship. Competed with Team 폭주(暴走), tied 9th.",
-      "ko": "2025 챔피언십 현장. 폭주(暴走) 팀으로 참가해 공동 9위를 기록했습니다."
+      "en": "With fellow participants at the 2025 championship. Competed with Team 폭주(暴走), tied 9th.",
+      "ko": "2025 챔피언십 참가자들과 함께한 단체 사진. 폭주(暴走) 팀으로 참가해 공동 9위를 기록했습니다."
     }
   },
   {

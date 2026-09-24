@@ -96,7 +96,7 @@ The owner authorized a survey of their connected iPhone and iCloud photo library
 | ev-team.jpg | July 2025 | ChaChaPing at the EV competition |
 | ev-pit.jpg | July 2025 | Vehicle and electronics preparation in the pit |
 | ev-race.mp4 | July 2025 | Actual EV competition course footage, about 20 seconds |
-| iccas-team.jpg | November 2025 | Group at the ICCAS 2025 venue |
+| iccas-participants.jpg | November 2025 | Larger participant group at ICCAS 2025, selected by the owner |
 | iccas-race.mp4 | November 2025 | Actual F1TENTH championship track footage, about 14 seconds |
 | tars-rover.jpg | June 2025 | Assembled Embedded-TARS rover |
 | tars-demo.mp4 | June 2025 | Physical lane-course rover demonstration, about 41 seconds |
@@ -148,3 +148,5 @@ The F1TENTH project implements its own PyTorch simulator and vehicle/sensor core
 The vehicle schematic selects seven calibrated views from one synchronized A-8 capture: front, front-left/right, rear, rear-left/right and a forward-up traffic-signal camera. Report outputs were checked against their manifest; maximum camera header-timestamp spread is 32.424 microseconds. This establishes the common recorded moment, not identical exposure time for every rolling-shutter pixel. The car diagram is directional rather than a dimensioned mounting drawing.
 
 Six cameras have genuine previous/new overlays of the same camera image. The traffic-signal camera has no historical calibration and therefore shows only its calibrated result, with the comparison slider disabled and an explicit note. No intermediate optimization result is substituted for a missing baseline. The original rendering remains unchanged apart from JPEG encoding/metadata removal. Each camera loads only when selected; pending selection races preserve the latest requested view.
+
+The ICCAS gallery photograph was corrected at the owner’s request on September 24: the earlier small-group image did not include them. Its replacement is the owner-confirmed larger participant-group image, retrieved at full resolution from iCloud. It is captioned as a participant group, not as one team alone.
