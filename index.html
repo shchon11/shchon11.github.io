@@ -16,7 +16,10 @@
   <link rel="preload" href="assets/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="media.css">
+  <link rel="stylesheet" href="interactions.css">
   <script src="script.js" defer></script>
+  <script src="field-media.js" defer></script>
+  <script src="interactions.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -25,6 +28,7 @@
     <nav aria-label="Main navigation">
       <a href="#competitions" data-i18n="navAwards">Awards</a>
       <a href="#work" data-i18n="navWork">Work</a>
+      <a href="#field" data-i18n="navField">In the field</a>
       <a href="#background" data-i18n="navCV">CV</a>
       <a href="#contact" data-i18n="navContact">Contact</a>
     </nav>
@@ -44,23 +48,101 @@
           <a class="button button-light" href="assets/Seonghyun-Chon-CV.pdf" download><span data-i18n="download">Download CV</span><span class="button-meta">PDF <span aria-hidden="true">↓</span></span></a>
           </div>
         </div>
-        <figure class="hero-reel">
-          <div class="reel-label"><span>IN MOTION / 01</span><span data-i18n="heroReelLabel">F1TENTH simulator</span></div>
-          <video id="hero-video" width="1280" height="720" controls muted loop playsinline preload="metadata" poster="assets/f1tenth-simulator-demo-poster.png" aria-label="F1TENTH simulator demonstration with a scripted reference driver"><source src="assets/simulator-reel.mp4" type="video/mp4"><a href="assets/simulator-reel.mp4">Watch simulator demonstration</a></video>
-          <figcaption><span data-i18n="heroReelCaption">A virtual car. Real sensor and control code.</span><span data-i18n="heroReelScope">Simulation · scripted reference driver</span></figcaption>
-          <div class="reel-next"><a href="#formula"><span data-i18n="alsoFormula">Also in motion: Formula Student</span> <span aria-hidden="true">↓</span></a></div>
+        <figure class="hero-reel calibration-hero">
+          <div class="reel-label"><span>REAL-WORLD / 01</span><span data-i18n="heroCalibLabel">Targetless calibration</span></div>
+          <div class="calibration-compare" style="--split:50%">
+            <img class="compare-base" src="assets/calibration/rear-after.jpg" width="1280" height="720" alt="Real road camera with LiDAR projection after calibration">
+            <div class="compare-before"><img src="assets/calibration/rear-before.jpg" width="1280" height="720" alt="The same road frame with the previous calibration"></div>
+            <span class="compare-tag before" data-i18n="compareBefore">BEFORE</span><span class="compare-tag after" data-i18n="compareAfter">AFTER</span>
+            <span class="compare-divider" aria-hidden="true"><span>↔</span></span>
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Reveal the previous calibration over the calibrated result">
+          </div>
+          <figcaption><span data-i18n="heroCalibCaption">No checkerboard.<br>Just drive.</span><span data-i18n="heroCalibScope">Align 7 cameras and LiDAR from ordinary driving logs. No dedicated target captures.</span></figcaption>
+          <div class="reel-next"><a href="#online-calibration"><span data-i18n="heroCalibLink">Drag to compare. Explore the method.</span><span aria-hidden="true">↓</span></a></div>
         </figure>
       </div>
       <div class="hero-bottom"><p data-i18n="heroBottom">RAW vision / Robot learning / Autonomous systems</p><a href="#work"><span data-i18n="explore">Explore my work</span><span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <section class="affiliations wrap" aria-labelledby="affiliation-heading">
+      <div class="affiliation-heading"><h2 id="affiliation-heading" data-i18n="affiliationHeading">Places, people, and roles.</h2><span data-i18n="affiliationHint">Select a mark to explore</span></div>
+      <div class="affiliation-grid">
+        <button type="button" class="affiliation-button" data-organization="hanyang"><img src="assets/logos/hanyang.svg" alt="Hanyang University" class="seal" width="60" height="60"><span data-i18n="orgHanyangRole">Automotive Engineering</span><small>2021 — PRESENT</small></button>
+        <button type="button" class="affiliation-button" data-organization="ircv"><img src="assets/logos/ircv.png" alt="IRCV Lab" width="150" height="40"><span data-i18n="orgIrcvRole">Undergraduate research</span><small>2026 — PRESENT</small></button>
+        <button type="button" class="affiliation-button" data-organization="lg"><img src="assets/logos/lg-electronics.png" alt="LG Electronics" width="150" height="40"><span data-i18n="orgLgRole">Industry-academia scholar</span><small>2025 — PRESENT</small></button>
+        <button type="button" class="affiliation-button" data-organization="miru"><img src="assets/logos/miru.png" alt="MiRu" class="club-logo" width="60" height="60"><span data-i18n="orgMiruRole">2nd President</span><small>SEP — DEC 2025</small></button>
+        <button type="button" class="affiliation-button" data-organization="race"><img src="assets/logos/race.png" alt="Hanyang RACE" width="150" height="60"><span data-i18n="orgRaceRole">Perception & SLAM</span><small>2026</small></button>
+      </div>
     </section>
 
     <section class="competitions wrap" id="competitions" aria-labelledby="competitions-title">
       <div class="competition-heading"><h2 class="eyebrow" id="competitions-title" data-i18n="competitionLabel">BUILT FOR THE TRACK. TESTED IN COMPETITION.</h2><span class="index">2025 — 2026</span></div>
       <div class="competition-grid">
         <article class="competition-item"><span class="date">JUL 2025</span><h3 class="award-result" data-i18n="grandPrize">Grand Prize<span>.</span></h3><p class="competition-name" data-i18n="evName">4th International University Student<br>EV Self-Driving Competition</p><p class="competition-detail" data-i18n="evDetail">Team ChaChaPing · 1/10th division. Developed lane perception and control for the competition.</p></article>
-        <article class="competition-item"><span class="date">NOV 2025</span><h3 class="award-result" data-i18n="ninth">9th<span> place</span></h3><p class="competition-name">ICCAS F1TENTH<br>Korea Championship</p><p class="competition-detail" data-i18n="iccasDetail">Developed adaptive lane/waypoint tracking and IMU/odometry interfaces for the racing stack.</p><a href="https://2025.iccas.org/?page_id=5104" target="_blank" rel="noopener noreferrer" class="competition-link"><span data-i18n="eventInfo">Event information</span> ↗</a></article>
+        <article class="competition-item"><span class="date">NOV 2025</span><h3 class="award-result" data-i18n="ninth">9th<span> tied</span></h3><p class="competition-name">ICCAS F1TENTH<br>Korea Championship · 폭주(暴走)</p><p class="competition-detail" data-i18n="iccasDetail">Developed adaptive lane/waypoint tracking and IMU/odometry interfaces for the racing stack.</p><a href="https://2025.iccas.org/?page_id=5104" target="_blank" rel="noopener noreferrer" class="competition-link"><span data-i18n="eventInfo">Event information</span> ↗</a></article>
         <article class="competition-item"><span class="date">2026</span><h3 class="award-result">FSK<span> / 26</span></h3><p class="competition-name" data-i18n="fskName">Formula Student Korea<br>Autonomous category</p><p class="competition-detail" data-i18n="fskDetail">Simulation, driving algorithm development, and competition preparation.</p><a href="https://github.com/shchon11/HYU-Formula-Student" target="_blank" rel="noopener noreferrer" class="competition-link"><span data-i18n="viewStack">Explore the stack</span> ↗</a></article>
       </div>
+    </section>
+
+    <section class="field-section wrap section" id="field" aria-labelledby="field-title">
+      <div class="section-heading"><div class="section-label"><span class="index">IN THE FIELD /</span><h2 id="field-title" data-i18n="fieldTitle">Where the work happens.</h2></div><span class="section-note" data-i18n="fieldNote">BUILDS / TESTS / COMPETITIONS</span></div>
+      <div class="field-filters" role="group" aria-label="Filter field gallery"><button type="button" data-field-filter="all" aria-pressed="true" data-i18n="fieldAll">All moments</button><button type="button" data-field-filter="competition" aria-pressed="false" data-i18n="fieldCompetition">Competitions</button><button type="button" data-field-filter="sensors" aria-pressed="false" data-i18n="fieldSensors">Sensors & fieldwork</button><button type="button" data-field-filter="builds" aria-pressed="false" data-i18n="fieldBuilds">In the workshop</button><span class="field-count" aria-live="polite"></span></div>
+      <div class="field-grid"><button class="field-card" type="button" data-field-key="ev-team" data-field-category="competition">
+        <span class="field-card-image"><img src="assets/field/ev-team.jpg" alt="ChaChaPing, at the EV competition" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2025.07 / PHOTO</span><span class="field-card-title">ChaChaPing, at the EV competition</span>
+      </button>
+<button class="field-card" type="button" data-field-key="iccas-team" data-field-category="competition">
+        <span class="field-card-image"><img src="assets/field/iccas-team.jpg" alt="ICCAS F1TENTH Korea" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2025.11 / PHOTO</span><span class="field-card-title">ICCAS F1TENTH Korea</span>
+      </button>
+<button class="field-card" type="button" data-field-key="sensor-rig" data-field-category="sensors">
+        <span class="field-card-image"><img src="assets/field/sensor-rig.jpg" alt="The sensor rig, on the vehicle" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2026.09 / PHOTO</span><span class="field-card-title">The sensor rig, on the vehicle</span>
+      </button>
+<button class="field-card" type="button" data-field-key="formula-integration" data-field-category="builds">
+        <span class="field-card-image"><img src="assets/field/formula-integration.jpg" alt="Bringing software onto the car" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2026.08 / PHOTO</span><span class="field-card-title">Bringing software onto the car</span>
+      </button>
+<button class="field-card" type="button" data-field-key="ev-race" data-field-category="competition">
+        <span class="field-card-image"><img src="assets/field/ev-race.jpg" alt="On the competition course" loading="lazy" width="640" height="480"><span class="field-play" aria-hidden="true">▶</span></span>
+        <span class="field-card-date">2025.07 / FILM</span><span class="field-card-title">On the competition course</span>
+      </button>
+<button class="field-card" type="button" data-field-key="ev-pit" data-field-category="competition">
+        <span class="field-card-image"><img src="assets/field/ev-pit.jpg" alt="Between runs" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2025.07 / PHOTO</span><span class="field-card-title">Between runs</span>
+      </button>
+<button class="field-card" type="button" data-field-key="tcar-team" data-field-category="sensors">
+        <span class="field-card-image"><img src="assets/field/tcar-team.jpg" alt="T-Car fieldwork" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2026.08 / PHOTO</span><span class="field-card-title">T-Car fieldwork</span>
+      </button>
+<button class="field-card" type="button" data-field-key="rig-assembly" data-field-category="sensors">
+        <span class="field-card-image"><img src="assets/field/rig-assembly.jpg" alt="Before the first frame" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2026.09 / PHOTO</span><span class="field-card-title">Before the first frame</span>
+      </button>
+<button class="field-card" type="button" data-field-key="iccas-race" data-field-category="competition">
+        <span class="field-card-image"><img src="assets/field/iccas-race.jpg" alt="ICCAS race footage" loading="lazy" width="640" height="480"><span class="field-play" aria-hidden="true">▶</span></span>
+        <span class="field-card-date">2025.11 / FILM</span><span class="field-card-title">ICCAS race footage</span>
+      </button>
+<button class="field-card" type="button" data-field-key="tars-rover" data-field-category="builds">
+        <span class="field-card-image"><img src="assets/field/tars-rover.jpg" alt="Embedded-TARS rover" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2025.06 / PHOTO</span><span class="field-card-title">Embedded-TARS rover</span>
+      </button>
+<button class="field-card" type="button" data-field-key="tars-demo" data-field-category="builds">
+        <span class="field-card-image"><img src="assets/field/tars-demo.jpg" alt="From the bench to the course" loading="lazy" width="640" height="480"><span class="field-play" aria-hidden="true">▶</span></span>
+        <span class="field-card-date">2025.06 / FILM</span><span class="field-card-title">From the bench to the course</span>
+      </button>
+<button class="field-card" type="button" data-field-key="formula-cockpit" data-field-category="builds">
+        <span class="field-card-image"><img src="assets/field/formula-cockpit.jpg" alt="A system, from the inside" loading="lazy" width="640" height="480"></span>
+        <span class="field-card-date">2026.08 / PHOTO</span><span class="field-card-title">A system, from the inside</span>
+      </button>
+<button class="field-card" type="button" data-field-key="tcar-field-test" data-field-category="sensors">
+        <span class="field-card-image"><img src="assets/field/tcar-field-test.jpg" alt="Seeing the road together" loading="lazy" width="640" height="480"><span class="field-play" aria-hidden="true">▶</span></span>
+        <span class="field-card-date">2026.08 / FILM</span><span class="field-card-title">Seeing the road together</span>
+      </button>
+<button class="field-card" type="button" data-field-key="formula-workshop" data-field-category="builds">
+        <span class="field-card-image"><img src="assets/field/formula-workshop.jpg" alt="Workshop integration" loading="lazy" width="640" height="480"><span class="field-play" aria-hidden="true">▶</span></span>
+        <span class="field-card-date">2026.08 / FILM</span><span class="field-card-title">Workshop integration</span>
+      </button></div>
     </section>
 
     <section class="about wrap section" id="about" aria-labelledby="about-title">
@@ -71,52 +153,85 @@
     <section class="work wrap section" id="work" aria-labelledby="work-title">
       <div class="section-heading"><div class="section-label"><span class="index">02 /</span><h2 id="work-title" data-i18n="workLabel">Selected work</h2></div><span class="section-note" data-i18n="workNote">RESEARCH ↔ ENGINEERING</span></div>
 
-      <article class="feature project dm-feature" id="datamachine">
-        <button type="button" class="gallery-item dm-preview" data-lightbox="assets/datamachine-sensor-preview.png"><img src="assets/datamachine-sensor-preview.png" alt="Actual Data Machine preview displaying fourteen visible cameras and two thermal cameras during a 30 Hz integration test" width="748" height="1250" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="dmImage">Inside the 16-camera acquisition rig</span><span aria-hidden="true">↗</span></span></button>
-        <div class="feature-copy"><div class="project-top"><span class="index">SENSOR SYSTEMS / 2026</span><span class="status" data-i18n="dmStatus">Real hardware integration</span></div><h3 data-i18n="dmTitle">Build the eyes.<br>Keep every frame.</h3><p class="project-subtitle">Data Machine · IRCV Lab</p><p data-i18n="dmBody">I work on the real-vehicle sensor acquisition platform: integrating visible and thermal cameras, LiDAR and GNSS, and turning separate device tools into one launch, record, preview and validation workflow.</p><div class="project-facts"><div><strong>14 + 2</strong><span data-i18n="dmStatCameras">visible + thermal cameras</span></div><div><strong>30 Hz</strong><span data-i18n="dmStatRate">camera acquisition in integration testing</span></div></div><ul class="contribution-list"><li data-i18n="dmGpu">CUDA/NPP demosaicing and nvJPEG encoding to remove the CPU bottleneck.</li><li data-i18n="dmQuality">Frame-ID, timestamp, frozen-image and GNSS diagnostics after recording.</li><li data-i18n="dmTiming">Camera exposure-time correction, GPIO triggering and host PPS/PTP verification.</li></ul><p class="scope-note" data-i18n="dmScope">The 19 September 2026 integration test recorded this setup without observed camera drops. Full all-sensor phase synchronization remains in progress.</p><div class="tags"><span>ROS 2</span><span>C++ / Python</span><span>CUDA / NPP</span><span>nvJPEG</span><span>Sensor integration</span></div><a class="text-link" href="https://github.com/shchon11/DM_clipGUI" target="_blank" rel="noopener noreferrer"><span data-i18n="dmCode">Acquisition platform & diagnostics</span><span aria-hidden="true">↗</span></a></div>
+      <div class="work-filters" role="group" aria-label="Filter selected work">
+        <button type="button" data-work-filter="all" aria-pressed="true" aria-controls="work" data-i18n="filterAll">All work</button>
+        <button type="button" data-work-filter="sensing" aria-pressed="false" aria-controls="work" data-i18n="filterSensing">Sensors & data</button>
+        <button type="button" data-work-filter="autonomy" aria-pressed="false" aria-controls="work" data-i18n="filterAutonomy">Autonomous systems</button>
+        <button type="button" data-work-filter="research" aria-pressed="false" aria-controls="work" data-i18n="filterResearch">RAW research</button>
+        <span class="filter-status" aria-live="polite"></span>
+      </div>
+
+      <article class="feature project dm-feature" id="datamachine" data-work-tags="sensing">
+        <button type="button" class="gallery-item dm-preview" data-lightbox="assets/field/sensor-rig.jpg"><img src="assets/field/sensor-rig.jpg" alt="The physical roof-mounted Data Machine camera and LiDAR rig during installation" width="1350" height="1800" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="dmImage">The physical sensor rig, during installation</span><span aria-hidden="true">↗</span></span></button>
+        <div class="feature-copy"><div class="project-top"><span class="index">SENSOR SYSTEMS / 2026</span><span class="status" data-i18n="dmStatus">Real hardware integration</span></div><h3 data-i18n="dmTitle">One rig.<br>The entire stack.</h3><p class="project-subtitle">Data Machine · IRCV Lab · Full-stack sensor platform</p><p data-i18n="dmBody">I build the real-vehicle sensor stack from low-level camera drivers to the operator interface: device configuration, GPU image processing, time synchronization, reliable acquisition and calibration. The UI brings that engineering together in one field workflow.</p><div class="project-facts"><div><strong>14 + 2</strong><span data-i18n="dmStatCameras">visible + thermal cameras</span></div><div><strong>30 Hz</strong><span data-i18n="dmStatRate">camera acquisition in integration testing</span></div></div><ul class="contribution-list"><li data-i18n="dmGpu">CUDA/NPP demosaicing and nvJPEG encoding to remove the CPU bottleneck.</li><li data-i18n="dmQuality">Frame-ID, timestamp, frozen-image and GNSS diagnostics after recording.</li><li data-i18n="dmTiming">Camera exposure-time correction, GPIO triggering and host PPS/PTP verification.</li></ul><p class="scope-note" data-i18n="dmScope">The 19 September 2026 integration test recorded this setup without observed camera drops. Full all-sensor phase synchronization remains in progress.</p><div class="tags"><span>ROS 2</span><span>C++ / Python</span><span>CUDA / NPP</span><span>nvJPEG</span><span>Sensor integration</span></div><a class="text-link" href="https://github.com/shchon11/DM_clipGUI" target="_blank" rel="noopener noreferrer"><span data-i18n="dmCode">Explore the acquisition stack</span><span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <article class="feature project" id="f1tenth">
+      <div class="stack-map" data-work-tags="sensing" aria-label="Data Machine engineering layers">
+        <div class="stack-heading"><span class="eyebrow" data-i18n="stackHeading">FROM THE DEVICE TO THE DATASET</span><span data-i18n="stackHint">Explore each layer</span></div>
+        <div class="stack-layers">
+          <details open><summary><span>01</span><strong data-i18n="stackDriver">Camera drivers</strong><span aria-hidden="true">+</span></summary><p data-i18n="stackDriverBody">Spinnaker-to-ROS 2 camera nodes, device discovery, visible/thermal camera support, and model-specific capability handling.</p></details>
+          <details><summary><span>02</span><strong data-i18n="stackTuning">Hardware & tuning</strong><span aria-hidden="true">+</span></summary><p data-i18n="stackTuningBody">Exposure, gain, ROI, pixel format, frame rate and network configuration, with runtime controls and persistent camera settings.</p></details>
+          <details><summary><span>03</span><strong data-i18n="stackTiming">Time synchronization</strong><span aria-hidden="true">+</span></summary><p data-i18n="stackTimingBody">GPIO exposure triggering, PTP/PPS time references, camera timestamp mapping and exposure-time correction across device and host clocks.</p></details>
+          <details><summary><span>04</span><strong data-i18n="stackAcquisition">GPU imaging & recording</strong><span aria-hidden="true">+</span></summary><p data-i18n="stackAcquisitionBody">CUDA/NPP demosaicing and nvJPEG encoding, concurrent sensor acquisition, manual and event-triggered recording, and frame integrity checks.</p></details>
+          <details><summary><span>05</span><strong data-i18n="stackGeometry">Geometric calibration</strong><span aria-hidden="true">+</span></summary><p data-i18n="stackGeometryBody">Camera intrinsics, extrinsics and rectification, extended by the online camera–LiDAR calibration and nuScenes export tooling below.</p></details>
+          <details><summary><span>06</span><strong data-i18n="stackOperation">Field operation</strong><span aria-hidden="true">+</span></summary><p data-i18n="stackOperationBody">One workflow for starting devices, selecting topics, viewing streams, recording events and diagnosing missing, frozen or mistimed data.</p></details>
+        </div>
+      </div>
+
+      <article class="online-calibration project" id="online-calibration" data-work-tags="sensing">
+        <div class="calibration-intro"><div class="project-top"><span class="index">CAMERA × LiDAR / 2026</span><span class="status" data-i18n="onlineStatus">Real driving logs</span></div><h3 data-i18n="onlineTitle">Make every<br>sensor agree.</h3><p class="project-subtitle" data-i18n="onlineSubtitle">Targetless online calibration · ROSbag → nuScenes</p><p data-i18n="onlineBody">I developed a camera–LiDAR calibration pipeline that uses ordinary driving logs to jointly estimate lens distortion, windshield refraction, sensor poses and timing. The resulting sensor models feed directly into the dataset converter.</p></div>
+        <div class="calibration-metrics"><div><strong>7</strong><span data-i18n="onlineCameras">cameras calibrated</span></div><div><strong>1.78 <small>px</small></strong><span data-i18n="onlineError">median held-out reprojection error</span></div><div><strong>2</strong><span data-i18n="onlineRuns">held-out driving clips</span></div></div>
+        <p class="calibration-metric-scope" data-i18n="onlineMetricScope">Seven cameras × two 30-second held-out clips. Median of 14 evaluation-cell medians; cell medians range from 1.57 to 2.36 px. Evaluated on matched LiDAR–image points, not external calibration ground truth.</p>
+        <div class="calibration-road"><img src="assets/calibration/road-before.jpg" width="720" height="440" loading="lazy" alt="Road marking LiDAR projection with previous calibration"><img src="assets/calibration/road-after.jpg" width="720" height="440" loading="lazy" alt="Road marking LiDAR projection with online calibration"><span data-i18n="compareBefore">BEFORE</span><span data-i18n="compareAfter">AFTER</span></div>
+        <p class="calibration-explanation" data-i18n="onlineVisual">The same real road frame, before and after calibration. Magenta points are high-reflectivity LiDAR returns: road paint should align with the image.</p>
+        <div class="calibration-method"><div><span>01 / TRACK</span><h4 data-i18n="calibTrackTitle">Model the camera, in motion.</h4><p data-i18n="calibTrackBody">Feature-track bundle adjustment with INS poses, rolling-shutter timing, a fisheye lens model and a B-spline windshield field.</p></div><div><span>02 / MATCH</span><h4 data-i18n="calibMatchTitle">Connect the two modalities.</h4><p data-i18n="calibMatchBody">LiDAR intensity rendering, LoFTR correspondences and robust PnP provide camera–LiDAR geometric constraints.</p></div><div><span>03 / REFINE</span><h4 data-i18n="calibRefineTitle">Solve it as one system.</h4><p data-i18n="calibRefineBody">Joint optimization combines tracks and LiDAR matches, estimates LiDAR-to-body alignment, then exports calibration for conversion.</p></div></div>
+        <button class="gallery-item calibration-matches" type="button" data-lightbox="assets/calibration/lidar-camera-matches.jpg"><img src="assets/calibration/lidar-camera-matches.jpg" width="1936" height="540" loading="lazy" alt="Actual correspondences between rendered LiDAR intensity and the road camera image"><span class="gallery-label"><span class="gallery-title" data-i18n="onlineMatches">LiDAR intensity render ↔ camera correspondences</span><span aria-hidden="true">↗</span></span></button>
+        <div class="calibration-footer"><p class="scope-note" data-i18n="onlineScope">Implemented and evaluated on recorded driving logs. Online tracking uses sliding windows and a prior from the previous estimate; real-time onboard deployment is not claimed here.</p><a class="text-link" href="https://github.com/jeongtaek1m/ROSbag_nuscenes_parser" target="_blank" rel="noopener noreferrer"><span data-i18n="onlineCode">Related dataset-conversion project</span><span aria-hidden="true">↗</span></a></div>
+      </article>
+
+      <article class="feature project" id="f1tenth" data-work-tags="autonomy">
         <figure class="feature-visual video-figure"><video controls playsinline preload="none" poster="assets/f1tenth-learning-demo-poster.png" width="1280" height="720" aria-label="Recorded learned-policy rollout including a collision and reset"><source src="assets/learned-policy.mp4" type="video/mp4"><a href="assets/learned-policy.mp4">Watch learned policy rollout</a></video><figcaption class="media-caption"><strong data-i18n="policyCaption">The learned policy, in motion.</strong><span data-i18n="policyScope">25-second recorded rollout. Includes a collision and reset at 5.125 s; this is a demonstration, not a benchmark.</span></figcaption></figure>
-        <div class="feature-copy"><div class="project-top"><span class="index">ROBOT LEARNING</span><span class="status" data-i18n="simStatus">Simulation research</span></div><h3>Learning<br>to race.</h3><p class="project-subtitle">F1TENTH E2E</p><p data-i18n="f1Body">A GPU-batched simulator and a LiDAR-based driving policy. DAgger and PPO learn short local plans; an iLQR controller turns those plans into steering and speed.</p><div class="project-facts"><div><strong>22</strong><span data-i18n="f1Stat1">real recordings used for calibration</span></div><div><strong>6 + 2</strong><span data-i18n="f1Stat2">curvature knots + target speeds</span></div></div><p class="scope-note" data-i18n="f1Limit">Policy results are simulation-only. Real-car transfer is not yet validated.</p><div class="tags"><span>PyTorch</span><span>DAgger / PPO</span><span>iLQR</span><span>ROS 2</span></div><a class="text-link" href="https://github.com/shchon11/F1tenth_E2E" target="_blank" rel="noopener noreferrer"><span data-i18n="viewProject">View project</span><span aria-hidden="true">↗</span></a></div>
+        <div class="feature-copy"><div class="project-top"><span class="index">ROBOT LEARNING</span><span class="status" data-i18n="simStatus">Simulation research</span></div><h3 data-i18n="f1Title">Build the simulator.<br>Learn to race.</h3><p class="project-subtitle">F1TENTH E2E · Custom simulator & learning stack</p><p data-i18n="f1Body">I designed and implemented the simulator itself: vehicle dynamics, LiDAR models, GPU-batched environments and track-building tools. DAgger/PPO policies learn local curvature-and-speed plans, which an iLQR controller tracks.</p><div class="project-facts"><div><strong>22</strong><span data-i18n="f1Stat1">real recordings used for calibration</span></div><div><strong>6 + 2</strong><span data-i18n="f1Stat2">curvature knots + target speeds</span></div></div><ul class="contribution-list"><li data-i18n="f1Physics">Pacejka tire forces, load transfer, combined-slip limits and actuator delays.</li><li data-i18n="f1Lidar">Custom Triton LiDAR kernels with ground, barrier, obstacle and vehicle returns.</li><li data-i18n="f1Tools">Interactive driving/training console, track editor, mesh import and procedural environments.</li></ul><p class="scope-note" data-i18n="f1Limit">Policy results are simulation-only. Real-car transfer is not yet validated.</p><div class="tags"><span>PyTorch</span><span>DAgger / PPO</span><span>iLQR</span><span>ROS 2</span></div><a class="text-link" href="https://github.com/shchon11/F1tenth_E2E" target="_blank" rel="noopener noreferrer"><span data-i18n="viewProject">View project</span><span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <div class="development-gallery" aria-label="Simulator development screenshots">
+      <details class="skidpad-details reference-details" data-work-tags="autonomy"><summary><span data-i18n="referenceDemo">Watch the simulator with a scripted reference driver</span><span aria-hidden="true">+</span></summary><video controls muted loop playsinline preload="none" poster="assets/f1tenth-simulator-demo-poster.png" width="1280" height="720" aria-label="F1TENTH simulator with a scripted reference driver"><source src="assets/simulator-reel.mp4" type="video/mp4"></video></details>
+
+      <div class="development-gallery" data-work-tags="autonomy" aria-label="Simulator development screenshots">
         <button type="button" class="gallery-item" data-lightbox="assets/f1tenth-console.png"><img src="assets/f1tenth-console.png" alt="Full driving console with simulator track and policy telemetry" width="1920" height="1200" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="galleryConsole">The driving console</span><span aria-hidden="true">↗</span></span></button>
         <button type="button" class="gallery-item" data-lightbox="assets/f1tenth-environment-editor.png"><img src="assets/f1tenth-environment-editor.png" alt="F1TENTH environment editor for building tracks and placing obstacles" width="1920" height="1200" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="galleryEditor">Building the environment</span><span aria-hidden="true">↗</span></span></button>
         <button type="button" class="gallery-item" data-lightbox="assets/f1tenth-trackgen-gallery.png"><img src="assets/f1tenth-trackgen-gallery.png" alt="A gallery of procedurally generated racing tracks" width="1920" height="1080" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="galleryTracks">A wider world to train in</span><span aria-hidden="true">↗</span></span></button>
       </div>
 
-      <article class="feature project formula-feature" id="formula">
+      <article class="feature project formula-feature" id="formula" data-work-tags="autonomy">
         <div class="feature-copy"><div class="project-top"><span class="index">AUTONOMOUS SYSTEMS</span><span class="status" data-i18n="formulaStatus">Development footage</span></div><h3 data-i18n="formulaTitle">From cones<br>to a racing line.</h3><p class="project-subtitle">Formula Student Korea / 2026</p><p data-i18n="fsBody">Responsible for perception and SLAM in the RACE team. Developed and integrated camera–LiDAR cone perception, g2o graph SLAM, sensor simulation, local/global planning, racing lines and control for Formula Student Korea 2026.</p><p class="scope-note" data-i18n="formulaScope">RViz recordings from the simulation stack. These are development runs, not competition footage.</p><div class="tags"><span>ROS 2</span><span>Gazebo</span><span>SLAM</span><span>Planning / Control</span></div><a class="text-link" href="https://github.com/shchon11/HYU-Formula-Student" target="_blank" rel="noopener noreferrer"><span data-i18n="viewStack">Explore the stack</span><span aria-hidden="true">↗</span></a></div>
         <div class="formula-media"><figure class="video-figure"><video controls playsinline preload="none" poster="assets/formula-track-poster.jpg" width="1280" height="720" aria-label="Formula Student simulated track-drive run shown in RViz"><source src="assets/formula-track.mp4" type="video/mp4"><a href="assets/formula-track.mp4">Watch Formula Student track drive</a></video><figcaption class="media-caption"><strong data-i18n="trackCaption">Track drive: perception → planning → control</strong><span data-i18n="trackScope">30-second excerpt from a recorded development run.</span></figcaption></figure><details class="skidpad-details"><summary data-i18n="skidpadSummary">Watch the skidpad development run <span aria-hidden="true">＋</span></summary><figure class="video-figure"><video controls playsinline preload="none" poster="assets/formula-skidpad-poster.jpg" width="1600" height="1000" aria-label="Formula Student skidpad simulation in RViz"><source src="assets/formula-skidpad.mp4" type="video/mp4"><a href="assets/formula-skidpad.mp4">Watch skidpad simulation</a></video><figcaption class="media-caption" data-i18n="skidpadCaption">Skidpad simulation · complete 65-second source recording.</figcaption></figure></details></div>
       </article>
 
-      <div class="development-gallery race-gallery" aria-label="RACE perception and platform imagery">
+      <div class="development-gallery race-gallery" data-work-tags="autonomy" aria-label="RACE perception and platform imagery">
         <button type="button" class="gallery-item" data-lightbox="assets/race-cone-detection.png"><img src="assets/race-cone-detection.png" alt="Camera view with colored-cone detections in the Formula Student simulation" width="1048" height="585" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="racePerception">Camera-based cone perception</span><span aria-hidden="true">↗</span></span></button>
         <button type="button" class="gallery-item" data-lightbox="assets/race-lidar.png"><img src="assets/race-lidar.png" alt="LiDAR returns and cone landmarks around the simulated Formula Student vehicle" width="1277" height="811" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="raceLidar">LiDAR and cone landmarks</span><span aria-hidden="true">↗</span></span></button>
         <button type="button" class="gallery-item" data-lightbox="assets/race-team-car.png"><img src="assets/race-team-car.png" alt="Hanyang RACE team Formula Student vehicle, from the team's orientation material" width="1326" height="746" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="raceCar">The RACE team platform</span><span aria-hidden="true">↗</span></span></button>
       </div>
 
       <div class="project-pair">
-        <article class="project research-project">
+        <article class="project research-project" data-work-tags="research">
           <div class="project-top"><span class="index">RAW PERCEPTION</span><span class="status" data-i18n="ongoing">Ongoing research</span></div>
           <div class="signal-diagram" role="img" aria-label="Research pipeline: RAW sensor data, image signal processing variants, object detection"><div><span class="diagram-step">01</span><strong>RAW</strong><small>Sensor data</small></div><span aria-hidden="true">→</span><div><span class="diagram-step">02</span><strong>ISP</strong><small>Render variants</small></div><span aria-hidden="true">→</span><div><span class="diagram-step">03</span><strong>VISION</strong><small>Object detection</small></div></div>
           <h3 data-i18n="rawTitle">Before the RGB.</h3><p class="project-subtitle" data-i18n="rawSub">RIFT · DriveRAW · ISP-stage research</p><p data-i18n="rawBody">I develop learned RAW-to-detector frontends and lead controlled experiments across datasets, ISP stages and pretraining regimes. The work includes paired RAW/RGB data acquisition, annotation tools, MMDetection baseline integration, ablations and cross-domain evaluation.</p><p class="scope-note" data-i18n="rawLimit">Research manuscripts and experimental systems. Related public tooling includes RAW-assisted auto-labeling.</p><details class="project-details"><summary data-i18n="researchDetails">Research contributions</summary><ul class="contribution-list"><li data-i18n="researchRift"><strong>RIFT / DriveRAW:</strong> task-specific RAW representations, paired low-light driving data, and common evaluation of learned ISP baselines.</li><li data-i18n="researchIsp"><strong>ISP-stage study:</strong> controlled RAW-to-sRGB and pretraining experiments, alignment checks, exposure and bit-depth analysis.</li><li data-i18n="researchTools"><strong>Research tools:</strong> assisted annotation, cross-ISP pseudo-label fusion, and a RAW-teacher/RGB-student uncertainty-distillation prototype.</li></ul></details><div class="tags"><span>Computer vision</span><span>RAW / ISP</span><span>Pseudo-labeling</span></div><a class="text-link" href="https://github.com/shchon11/RAW-Autolabel" target="_blank" rel="noopener noreferrer"><span data-i18n="viewCode">Explore the code</span><span aria-hidden="true">↗</span></a>
         </article>
-        <article class="project sensor-project">
+        <article class="project sensor-project" data-work-tags="sensing">
           <div class="project-top"><span class="index">CALIBRATION</span><span class="status" data-i18n="tooling">Sensor infrastructure</span></div>
           <button type="button" class="gallery-item calibration-visual" data-lightbox="assets/camera-calibration.png"><img src="assets/camera-calibration.png" alt="Real checkerboard calibration capture shown as original, undistorted image, and valid crop" width="2634" height="878" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="calibrationCaption">Original → undistorted → valid crop</span><span aria-hidden="true">↗</span></span></button>
           <h3 data-i18n="sensorTitle">Make the data work.</h3><p class="project-subtitle" data-i18n="sensorSub">Multi-camera acquisition & calibration</p><p data-i18n="sensorBody">Tools for FLIR camera streaming, synchronized capture, intrinsic and extrinsic calibration, and RAW/RGB export. Connecting camera hardware and ROS recordings to datasets that perception models can use.</p><p class="scope-note" data-i18n="sensorLimit">Camera models, capture-time metadata and calibration workflows underpin the larger Data Machine and T-Car systems.</p><div class="tags"><span>C++ / Python</span><span>Spinnaker</span><span>OpenCV</span><span>ROS 2</span></div><a class="text-link" href="https://github.com/shchon11/FLIR_control" target="_blank" rel="noopener noreferrer"><span data-i18n="viewProject">View project</span><span aria-hidden="true">↗</span></a>
         </article>
       </div>
 
-      <article class="traffic-project project">
+      <article class="traffic-project project" data-work-tags="sensing">
         <button type="button" class="gallery-item confusion-visual" data-lightbox="assets/traffic-confusion.png"><img src="assets/traffic-confusion.png" alt="Normalized confusion matrix for seven traffic-light state classes from the T-Car training run" width="3000" height="2250" loading="lazy"><span class="gallery-label"><span class="gallery-title" data-i18n="confusionCaption">Inside the classifier: seven signal states</span><span aria-hidden="true">↗</span></span></button>
         <div class="traffic-copy"><div class="project-top"><span class="index">DRIVING PERCEPTION</span><span class="status" data-i18n="tcarType">Driving perception</span></div><h3 data-i18n="trafficTitle">Read the signal.</h3><p class="project-subtitle" data-i18n="tcarTitle">T-Car traffic-light perception</p><p data-i18n="tcarBody">A two-stage pipeline for traffic-light detection and seven-state classification, with data preparation and training workflows.</p><p class="scope-note" data-i18n="confusionScope">A normalized confusion matrix from the documented training run. It shows class-level evaluation, not an on-road reliability measurement.</p><div class="tags"><span>YOLO</span><span>Classification</span><span>Data preparation</span></div><a class="text-link" href="https://github.com/shchon11/T-CAR" target="_blank" rel="noopener noreferrer"><span data-i18n="viewProject">View project</span><span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <div class="more-work">
+      <div class="more-work" data-work-tags="sensing">
         <a class="work-row" href="https://github.com/jeongtaek1m/ROSbag_nuscenes_parser" target="_blank" rel="noopener noreferrer"><span class="index">↳</span><div><h3 data-i18n="parserTitle">From sensor bags to usable datasets</h3><p data-i18n="parserBody">Contributed synchronization-aware ROS-to-nuScenes conversion: complete camera-set selection, dropped-frame handling, rectification, LiDAR/radar/INS export and robust batch ingestion.</p></div><span class="row-type">T-Car / 2026</span><span class="row-arrow" aria-hidden="true">↗</span></a>
         <a class="work-row" href="https://github.com/shchon11/2DOD" target="_blank" rel="noopener noreferrer"><span class="index">↳</span><div><h3 data-i18n="odTitle">Perception that plugs into the vehicle</h3><p data-i18n="odBody">Integrated YOLO object detection with ROS messages and visualization; investigated camera–LiDAR association, temporal misalignment and false positives alongside the two-stage traffic-light pipeline.</p></div><span class="row-type">T-Car / 2026</span><span class="row-arrow" aria-hidden="true">↗</span></a>
         <article class="work-row"><span class="index">↳</span><div><h3 data-i18n="routeTitle">A shared workflow for collecting driving data</h3><p data-i18n="routeBody">Built and deployed a route-management application for the lab, connecting coordinate-defined routes, navigation, collection runs, GPS sharing and route history. FastAPI with a map-based web interface.</p></div><span class="row-type" data-i18n="internalTool">Internal field tool / 2026</span></article>
@@ -137,9 +252,11 @@
       <article class="additional-card"><span class="eyebrow accent">SYSTEMS / APR–JUN 2026</span><h3 data-i18n="systemsTitle">Below the application.</h3><p data-i18n="systemsBody">Implemented a CFS-style scheduler with a red-black-tree run queue, clone/join threads sharing an address space, and lazy file-backed mmap/munmap in xv6/RISC-V coursework.</p><div class="tags"><span>C</span><span>RISC-V</span><span>Scheduling</span><span>Virtual memory</span></div><div class="seminar"><span class="eyebrow" data-i18n="seminarLabel">SELECTED TALK · 14 AUG 2026</span><p data-i18n="seminarBody">ISP and low-light structure from motion — IRCV Lab seminar, including a discussion of Dark3R.</p></div></article>
     </div><p class="future-note" data-i18n="futureNote">Current exploration: verified language corrections and data flywheels for bimanual vision-language-action models.</p></section>
 
-    <section class="contact wrap section" id="contact" aria-labelledby="contact-title"><div class="contact-top"><span class="eyebrow" data-i18n="contactLabel">LET'S CONNECT</span><span class="small" data-i18n="contactSub">Research, robotics, and things that move.</span></div><a class="contact-main" href="mailto:shchon11@hanyang.ac.kr"><h2 id="contact-title" data-i18n="contactTitle">Let's build<br>what's next.</h2><span aria-hidden="true">↗</span></a><div class="contact-bottom"><a href="mailto:shchon11@hanyang.ac.kr">shchon11@hanyang.ac.kr</a><div><a href="https://github.com/shchon11" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://ircv.hanyang.ac.kr/" target="_blank" rel="noopener noreferrer">IRCV Lab ↗</a></div></div></section>
+    <section class="contact wrap section" id="contact" aria-labelledby="contact-title"><div class="contact-top"><span class="eyebrow" data-i18n="contactLabel">LET'S CONNECT</span><span class="small" data-i18n="contactSub">Research, robotics, and things that move.</span></div><a class="contact-main" href="mailto:shchon11@hanyang.ac.kr"><h2 id="contact-title" data-i18n="contactTitle">Let's build<br>what's next.</h2><span aria-hidden="true">↗</span></a><div class="contact-bottom"><a href="mailto:shchon11@hanyang.ac.kr">shchon11@hanyang.ac.kr</a><div><a href="https://github.com/shchon11" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/seonghyun-chon-4397973b0/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://ircv.hanyang.ac.kr/" target="_blank" rel="noopener noreferrer">IRCV Lab ↗</a></div></div></section>
   </main>
   <dialog id="image-viewer" aria-label="Project image viewer"><button type="button" class="viewer-close" data-i18n="closeImage">Close ×</button><img alt=""><p class="viewer-caption"></p></dialog>
+  <dialog id="organization-viewer" aria-labelledby="organization-title"><button type="button" class="viewer-close" data-i18n="closeImage">Close ×</button><img class="organization-mark" alt=""><p class="organization-period"></p><h2 id="organization-title"></h2><p class="organization-description"></p><div class="organization-links"></div></dialog>
+  <dialog id="field-viewer" aria-label="Field photos and videos"><button type="button" class="viewer-close" data-i18n="closeImage">Close ×</button><div class="field-viewer-stage"><img alt=""><video controls playsinline preload="none" hidden></video></div><div class="field-viewer-bottom"><div><span class="field-viewer-date"></span><h2></h2><p></p></div><div class="field-viewer-controls"><button type="button" class="field-prev" aria-label="Previous item">←</button><span class="field-position" aria-live="polite"></span><button type="button" class="field-next" aria-label="Next item">→</button></div></div></dialog>
   <footer class="wrap"><span>© 2026 Seonghyun Chon</span><span data-i18n="updated">Updated September 2026</span><a href="#top"><span data-i18n="backTop">Back to top</span> ↑</a></footer>
 </body>
 </html>

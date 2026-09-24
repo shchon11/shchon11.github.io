@@ -89,6 +89,49 @@ Object.assign(korean, {
   futureNote: '현재 탐색 중인 방향: 검증된 언어 교정과 데이터 순환을 활용하는 양팔 VLA 학습.'
 });
 
+Object.assign(korean, {
+  affiliationHeading: '함께한 곳과 맡은 역할.', affiliationHint: '로고를 눌러 살펴보세요',
+  orgHanyangRole: '미래자동차공학 · 자동차 SW', orgIrcvRole: '학부 연구 인턴', orgLgRole: '산학장학생', orgMiruRole: '제2대 회장', orgRaceRole: '인지 및 SLAM',
+  filterAll: '전체', filterSensing: '센서·데이터', filterAutonomy: '자율주행 시스템', filterResearch: 'RAW 연구', ninth: '공동 9위<span>.</span>'
+});
+
+Object.assign(korean, { navField: '현장 기록', fieldTitle: '실제로 만들어가는 현장.', fieldNote: '제작 / 테스트 / 대회', fieldAll: '전체', fieldCompetition: '대회', fieldSensors: '센서·현장 작업', fieldBuilds: '제작과 통합', dmImage: '장착 중인 실제 센서 리그' });
+
+Object.assign(korean, {
+  heroCalibLabel: '타깃 없는 캘리브레이션', heroCalibCaption: '체커보드 없이.<br>주행 데이터만으로.', heroCalibScope: '별도 보정판 촬영 없이, 평소 주행 로그로 7대 카메라와 LiDAR를 정렬합니다.', heroCalibLink: '직접 비교하고, 방법 살펴보기',
+  compareBefore: '보정 전', compareAfter: '보정 후',
+  dmTitle: '카메라 드라이버부터<br>현장의 화면까지.',
+  dmBody: '저수준 카메라 드라이버부터 장치 설정, GPU 영상 처리, 시간 동기화, 안정적인 취득과 보정, 사용자 인터페이스까지 실차 센서 스택 전체를 개발합니다. UI는 이 엔지니어링을 하나의 현장 운영 흐름으로 연결합니다.', dmCode: '센서 취득 스택 살펴보기',
+  stackHeading: '장치에서 데이터셋까지', stackHint: '각 단계를 펼쳐보세요',
+  stackDriver: '카메라 드라이버', stackDriverBody: 'Spinnaker 기반 ROS 2 카메라 노드, 장치 검색, 가시광·열화상 카메라 지원과 모델별 기능 차이 처리.',
+  stackTuning: '하드웨어 설정·튜닝', stackTuningBody: '노출·게인·ROI·픽셀 형식·프레임 레이트·네트워크 설정, 런타임 제어와 카메라 설정 저장.',
+  stackTiming: '시간 동기화', stackTimingBody: 'GPIO 노출 트리거, PTP/PPS 시간 기준, 카메라 타임스탬프 매핑과 노출 시각 보정으로 장치·호스트 시간축 연결.',
+  stackAcquisition: 'GPU 처리·데이터 취득', stackAcquisitionBody: 'CUDA/NPP 디모자이킹과 nvJPEG 인코딩, 다중 센서 동시 취득, 수동·이벤트 녹화와 프레임 무결성 검사.',
+  stackGeometry: '기하 보정', stackGeometryBody: '카메라 내·외부 파라미터와 왜곡 보정부터, 아래의 온라인 카메라–LiDAR 캘리브레이션 및 nuScenes 변환 도구까지 확장.',
+  stackOperation: '현장 운영 UI', stackOperationBody: '장치 기동, 토픽 선택, 스트림 확인, 이벤트 기록과 누락·영상 멈춤·시간축 오류 진단을 하나의 워크플로로 통합.',
+  onlineStatus: '실제 주행 로그', onlineTitle: '모든 센서의<br>좌표를 맞추다.', onlineSubtitle: '타깃 없는 온라인 캘리브레이션 · ROSbag → nuScenes',
+  onlineBody: '일반 주행 로그로 렌즈 왜곡, 윈드쉴드 굴절, 센서 자세와 시간을 함께 추정하는 카메라–LiDAR 캘리브레이션 파이프라인을 개발했습니다. 보정된 센서 모델은 데이터셋 변환기로 바로 연결됩니다.',
+  onlineVisual: '동일한 실제 도로 프레임의 보정 전후입니다. 자홍색은 반사도가 높은 LiDAR 점으로, 영상 속 노면 표시와 일치해야 합니다.',
+  calibTrackTitle: '움직이는 카메라를 모델링.', calibTrackBody: 'INS 자세, 롤링 셔터 시각, 어안 렌즈 모델과 B-spline 윈드쉴드 필드를 결합한 특징점 트랙 번들 조정.',
+  calibMatchTitle: '다른 센서 사이의 대응점.', calibMatchBody: 'LiDAR 반사도 렌더링, LoFTR 대응점과 강건한 PnP로 카메라–LiDAR 기하 제약을 구성합니다.',
+  calibRefineTitle: '하나의 시스템으로 추정.', calibRefineBody: '트랙과 LiDAR 매칭을 공동 최적화하고 LiDAR–차체 정합까지 추정한 뒤, 변환기에 사용할 보정값을 내보냅니다.',
+  onlineMatches: 'LiDAR 반사도 렌더 ↔ 카메라 대응점', onlineScope: '기록된 주행 로그에서 구현·평가했습니다. 온라인 추종은 슬라이딩 윈도우와 직전 추정값의 prior를 사용하며, 실시간 차량 배포를 주장하는 결과는 아닙니다.', onlineCode: '관련 데이터셋 변환 프로젝트',
+  referenceDemo: '스크립트 기준 주행기의 시뮬레이터 영상 보기'
+});
+
+Object.assign(korean, {
+  onlineCameras: '보정한 카메라', onlineError: '별도 주행에서의 재투영 오차 중앙값', onlineRuns: '보정에 사용하지 않은 주행 구간',
+  onlineMetricScope: '7대 카메라 × 별도 주행 30초 구간 2개를 평가한 14개 셀 중앙값들의 중앙값입니다. 각 셀 중앙값은 1.57–2.36px이며, 외부 정답 캘리브레이션이 아닌 LiDAR–영상 매칭점 기준의 검증입니다.'
+});
+
+Object.assign(korean, {
+  f1Title: '시뮬레이터를 만들고,<br>주행을 학습시키다.',
+  f1Body: '차량 동역학과 LiDAR 모델, GPU 병렬 환경, 트랙 제작 도구까지 시뮬레이터 자체를 설계·구현했습니다. DAgger/PPO 정책은 곡률·속도로 표현된 로컬 계획을 학습하고, iLQR 제어기가 이를 추종합니다.',
+  f1Physics: 'Pacejka 타이어 힘, 하중 이동, 복합 슬립 한계와 액추에이터 지연 모델.',
+  f1Lidar: '노면·방벽·장애물·다른 차량의 반사를 다루는 자체 Triton LiDAR 커널.',
+  f1Tools: '주행·학습 콘솔, 트랙 편집기, 메시 불러오기와 절차적 환경 생성.'
+});
+
 const translatable = [...document.querySelectorAll('[data-i18n]')];
 const english = Object.fromEntries(translatable.map(node => [node.dataset.i18n, node.innerHTML]));
 const languageButton = document.querySelector('.language');
@@ -104,6 +147,7 @@ function setLanguage(language) {
   languageButton.innerHTML = `${isKorean ? 'EN' : 'KR'} <span aria-hidden="true">↗</span>`;
   languageButton.setAttribute('aria-label', isKorean ? 'Switch to English' : '한국어로 보기');
   languageButton.setAttribute('aria-pressed', String(isKorean));
+  document.dispatchEvent(new Event('cv:languagechange'));
   try { localStorage.setItem('cv-language', language); } catch { /* Storage is optional. */ }
 }
 
@@ -128,12 +172,6 @@ imageViewer.addEventListener('click', event => {
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) imageViewer.close();
 });
 
-const heroVideo = document.querySelector('#hero-video');
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-if (!reducedMotion.matches && !navigator.connection?.saveData) {
-  heroVideo.play().catch(() => { /* Native controls remain available when autoplay is blocked. */ });
-}
-reducedMotion.addEventListener('change', event => { if (event.matches) heroVideo.pause(); });
 if ('IntersectionObserver' in window) {
   const visibility = new IntersectionObserver(entries => {
     entries.forEach(entry => { if (!entry.isIntersecting) entry.target.pause(); });
@@ -143,6 +181,6 @@ if ('IntersectionObserver' in window) {
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) document.querySelectorAll('video').forEach(video => video.pause());
 });
-document.querySelector('.skidpad-details').addEventListener('toggle', event => {
-  if (!event.target.open) event.target.querySelector('video').pause();
-});
+document.querySelectorAll('.skidpad-details').forEach(details => details.addEventListener('toggle', () => {
+  if (!details.open) details.querySelector('video').pause();
+}));
