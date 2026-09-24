@@ -141,3 +141,10 @@ The hero comparison is actual held-out rear-left camera footage with previous/ca
 ## Custom F1TENTH simulator authorship
 
 The F1TENTH project implements its own PyTorch simulator and vehicle/sensor core. Owner-authored commit `7348724` introduced `dynamics.py`, `lidar.py`, `lidar_triton.py` and `sim.py`; current source supports Pacejka tire dynamics, load transfer, combined-slip limits, actuator delays, GPU batches and Triton LiDAR simulation. Track/environment tools include editing, mesh import and procedural generation. F1TENTH Gym is referenced for assets/comparison; the inspected simulation core is not merely invoking its runtime. See the [project source](https://github.com/shchon11/F1tenth_E2E), [environment-editor documentation](https://github.com/shchon11/F1tenth_E2E/blob/main/docs/environment_editor.md) and [real-data calibration documentation](https://github.com/shchon11/F1tenth_E2E/blob/main/docs/real_data_calibration.md).
+
+
+## Seven-camera interactive hero
+
+The vehicle schematic selects seven calibrated views from one synchronized A-8 capture: front, front-left/right, rear, rear-left/right and a forward-up traffic-signal camera. Report outputs were checked against their manifest; maximum camera header-timestamp spread is 32.424 microseconds. This establishes the common recorded moment, not identical exposure time for every rolling-shutter pixel. The car diagram is directional rather than a dimensioned mounting drawing.
+
+Six cameras have genuine previous/new overlays of the same camera image. The traffic-signal camera has no historical calibration and therefore shows only its calibrated result, with the comparison slider disabled and an explicit note. No intermediate optimization result is substituted for a missing baseline. The original rendering remains unchanged apart from JPEG encoding/metadata removal. Each camera loads only when selected; pending selection races preserve the latest requested view.

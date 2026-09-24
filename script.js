@@ -132,6 +132,10 @@ Object.assign(korean, {
   f1Tools: '주행·학습 콘솔, 트랙 편집기, 메시 불러오기와 절차적 환경 생성.'
 });
 
+Object.assign(korean, {
+  cameraFront: '전방', cameraFrontLeft: '전방 좌', cameraFrontRight: '전방 우', cameraBackLeft: '후방 좌', cameraBackRight: '후방 우', cameraBack: '후방', cameraTraffic: '신호등', cameraMoment: '같은 순간, 일곱 개의 시점.'
+});
+
 const translatable = [...document.querySelectorAll('[data-i18n]')];
 const english = Object.fromEntries(translatable.map(node => [node.dataset.i18n, node.innerHTML]));
 const languageButton = document.querySelector('.language');

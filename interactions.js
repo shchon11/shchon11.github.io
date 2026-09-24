@@ -187,13 +187,83 @@ fieldViewer.addEventListener('keydown', event => {
 document.addEventListener('cv:languagechange', updateFieldCopy);
 updateFieldCopy();
 
+const cameraViews = [
+  { key: 'front', en: 'Front', ko: '전방', before: true },
+  { key: 'front-left', en: 'Front left', ko: '전방 좌측', before: true },
+  { key: 'front-right', en: 'Front right', ko: '전방 우측', before: true },
+  { key: 'back', en: 'Rear', ko: '후방', before: true },
+  { key: 'back-left', en: 'Rear left', ko: '후방 좌측', before: true },
+  { key: 'back-right', en: 'Rear right', ko: '후방 우측', before: true },
+  { key: 'traffic', en: 'Traffic signal · forward-up', ko: '신호등 · 전방 상향', before: false }
+];
 const comparison = document.querySelector('.calibration-compare');
 const comparisonRange = comparison.querySelector('input');
+let activeCamera = cameraViews[4];
+let cameraRequest = 0;
+let cameraLoading = false;
+let cameraFailed = false;
+
 function updateComparison() {
   comparisonRange.setAttribute('aria-label', isKorean() ? '보정 전후 LiDAR 투영 결과 비교' : 'Compare LiDAR projection before and after calibration');
   comparison.style.setProperty('--split', `${comparisonRange.value}%`);
   comparisonRange.setAttribute('aria-valuetext', isKorean() ? `보정 전 ${comparisonRange.value}% 표시` : `${comparisonRange.value}% previous calibration visible`);
 }
+function renderCameraCopy() {
+  const name = activeCamera[isKorean() ? 'ko' : 'en'];
+  document.querySelector('.camera-name').textContent = name;
+  document.querySelector('.camera-count').textContent = `${String(cameraViews.indexOf(activeCamera) + 1).padStart(2, '0')} / 07`;
+  document.querySelector('.camera-map').setAttribute('aria-label', isKorean() ? '차량 카메라 선택' : 'Choose a vehicle camera');
+  document.querySelectorAll('[data-camera-view]').forEach(button => {
+    const view = cameraViews.find(item => item.key === button.dataset.cameraView);
+    button.setAttribute('aria-label', isKorean() ? `${view.ko} 카메라` : `${view.en} camera`);
+    button.setAttribute('aria-pressed', String(view === activeCamera));
+  });
+  document.querySelectorAll('[data-camera-beam]').forEach(beam => beam.classList.toggle('active', beam.dataset.cameraBeam === activeCamera.key));
+  comparison.querySelector('.compare-base').alt = isKorean() ? `${name} 카메라의 보정 후 LiDAR 투영` : `${name} camera: calibrated LiDAR projection`;
+  comparison.querySelector('.compare-before img').alt = isKorean() ? `${name} 카메라의 기존 보정 LiDAR 투영` : `${name} camera: previous LiDAR projection`;
+  const state = document.querySelector('.camera-state');
+  if (cameraLoading) state.textContent = isKorean() ? '카메라 화면을 불러오는 중…' : 'Loading camera view…';
+  else if (cameraFailed) state.textContent = isKorean() ? '화면을 불러오지 못했습니다. 카메라를 다시 선택해 주세요.' : 'View unavailable. Select a camera to retry.';
+  else if (!activeCamera.before) state.textContent = isKorean() ? '기존 보정값이 없어 보정 후 결과만 표시합니다.' : 'Calibrated result only. No previous calibration is available for this camera.';
+  else state.textContent = isKorean() ? '차량 위 카메라를 고른 뒤, 슬라이더로 전후를 비교하세요.' : 'Select a camera on the car, then drag to compare.';
+  comparison.querySelector('.compare-tag.after').textContent = activeCamera.before ? (isKorean() ? '보정 후' : 'AFTER') : (isKorean() ? '보정 결과' : 'CALIBRATED');
+}
+async function selectCamera(key) {
+  const view = cameraViews.find(item => item.key === key);
+  if (!view) return;
+  const request = ++cameraRequest;
+  cameraLoading = true;
+  cameraFailed = false;
+  comparison.setAttribute('aria-busy', 'true');
+  renderCameraCopy();
+  const after = `assets/calibration/cameras/${view.key}-after.jpg`;
+  const before = view.before ? `assets/calibration/cameras/${view.key}-before.jpg` : null;
+  try {
+    await Promise.all([after, before].filter(Boolean).map(src => new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = resolve;
+      image.onerror = reject;
+      image.src = src;
+    })));
+    if (request !== cameraRequest) return;
+    comparison.querySelector('.compare-base').src = after;
+    if (before) comparison.querySelector('.compare-before img').src = before;
+    comparison.querySelector('.compare-before').hidden = !view.before;
+    comparison.querySelector('.compare-tag.before').hidden = !view.before;
+    comparison.querySelector('.compare-divider').hidden = !view.before;
+    comparisonRange.hidden = !view.before;
+    comparisonRange.disabled = !view.before;
+    activeCamera = view;
+  } catch {
+    if (request !== cameraRequest) return;
+    cameraFailed = true;
+  }
+  cameraLoading = false;
+  comparison.setAttribute('aria-busy', 'false');
+  renderCameraCopy();
+}
+document.querySelectorAll('[data-camera-view]').forEach(button => button.addEventListener('click', () => selectCamera(button.dataset.cameraView)));
 comparisonRange.addEventListener('input', updateComparison);
-document.addEventListener('cv:languagechange', updateComparison);
+document.addEventListener('cv:languagechange', () => { updateComparison(); renderCameraCopy(); });
 updateComparison();
+renderCameraCopy();
