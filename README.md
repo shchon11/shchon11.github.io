@@ -2,7 +2,7 @@
 
 Personal research portfolio and curriculum vitae: **https://shchon11.github.io/**
 
-A responsive, English/Korean static site with selected research, competition experience, education, and a downloadable one-page CV. Built with semantic HTML, CSS, and plain JavaScript. No package installation or build step is required.
+A responsive, English/Korean static site with selected research, competition experience, education, and a downloadable two-page CV. Built with semantic HTML, CSS, and plain JavaScript. No package installation or build step is required.
 
 ## Preview
 
@@ -18,7 +18,7 @@ Open http://localhost:8000. GitHub Pages publishes the root of `main`; `.nojekyl
 
 - English content and links: `index.html`.
 - Korean translations: the `korean` dictionary in `script.js`. Keep `data-i18n` keys aligned.
-- Visual styles and responsive layouts: `style.css`.
+- Visual styles and responsive layouts: `style.css` and `media.css`.
 - Downloadable CV: replace `assets/Seonghyun-Chon-CV.pdf`.
 - Update the date in the footer and `sitemap.xml` when making substantive content changes.
 
